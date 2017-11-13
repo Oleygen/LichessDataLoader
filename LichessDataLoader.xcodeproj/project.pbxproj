@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		585F038A1FB50AB1003F6D09 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585F03891FB50AB1003F6D09 /* Extension.swift */; };
 		586ECD6E1FB116DC00BBFE89 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586ECD6D1FB116DC00BBFE89 /* main.swift */; };
+		586ECD751FB118F500BBFE89 /* ThisApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586ECD741FB118F500BBFE89 /* ThisApplication.swift */; };
+		586ECD7A1FB11B4A00BBFE89 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586ECD791FB11B4A00BBFE89 /* GameModel.swift */; };
+		586ECD7C1FB11F7500BBFE89 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586ECD7B1FB11F7500BBFE89 /* UserModel.swift */; };
+		586ECD7E1FB11F7900BBFE89 /* OpeningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586ECD7D1FB11F7900BBFE89 /* OpeningModel.swift */; };
+		58F213F11FB23FF20087682A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F213F01FB23FF20087682A /* CoreDataManager.swift */; };
+		58FCB1281FB3A42B006D923B /* GameDomainModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58FCB1261FB3A42B006D923B /* GameDomainModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +30,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		585F03891FB50AB1003F6D09 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		586ECD6A1FB116DC00BBFE89 /* LichessDataLoader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LichessDataLoader; sourceTree = BUILT_PRODUCTS_DIR; };
 		586ECD6D1FB116DC00BBFE89 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		586ECD741FB118F500BBFE89 /* ThisApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisApplication.swift; sourceTree = "<group>"; };
+		586ECD791FB11B4A00BBFE89 /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		586ECD7B1FB11F7500BBFE89 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		586ECD7D1FB11F7900BBFE89 /* OpeningModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningModel.swift; sourceTree = "<group>"; };
+		58F213F01FB23FF20087682A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		58FCB1271FB3A42B006D923B /* GameDomainModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameDomainModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		585F03881FB50A9E003F6D09 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				585F03891FB50AB1003F6D09 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		586ECD611FB116DC00BBFE89 = {
 			isa = PBXGroup;
 			children = (
@@ -57,9 +79,32 @@
 		586ECD6C1FB116DC00BBFE89 /* LichessDataLoader */ = {
 			isa = PBXGroup;
 			children = (
+				585F03881FB50A9E003F6D09 /* Extension */,
+				586ECD761FB119D000BBFE89 /* CodableDomain */,
+				58F213F51FB2440A0087682A /* CoreDataDomain */,
 				586ECD6D1FB116DC00BBFE89 /* main.swift */,
+				586ECD741FB118F500BBFE89 /* ThisApplication.swift */,
+				58F213F01FB23FF20087682A /* CoreDataManager.swift */,
 			);
 			path = LichessDataLoader;
+			sourceTree = "<group>";
+		};
+		586ECD761FB119D000BBFE89 /* CodableDomain */ = {
+			isa = PBXGroup;
+			children = (
+				586ECD7D1FB11F7900BBFE89 /* OpeningModel.swift */,
+				586ECD7B1FB11F7500BBFE89 /* UserModel.swift */,
+				586ECD791FB11B4A00BBFE89 /* GameModel.swift */,
+			);
+			path = CodableDomain;
+			sourceTree = "<group>";
+		};
+		58F213F51FB2440A0087682A /* CoreDataDomain */ = {
+			isa = PBXGroup;
+			children = (
+				58FCB1261FB3A42B006D923B /* GameDomainModel.xcdatamodeld */,
+			);
+			path = CoreDataDomain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +165,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F213F11FB23FF20087682A /* CoreDataManager.swift in Sources */,
+				586ECD751FB118F500BBFE89 /* ThisApplication.swift in Sources */,
+				586ECD7A1FB11B4A00BBFE89 /* GameModel.swift in Sources */,
+				586ECD7E1FB11F7900BBFE89 /* OpeningModel.swift in Sources */,
+				586ECD7C1FB11F7500BBFE89 /* UserModel.swift in Sources */,
+				58FCB1281FB3A42B006D923B /* GameDomainModel.xcdatamodeld in Sources */,
 				586ECD6E1FB116DC00BBFE89 /* main.swift in Sources */,
+				585F038A1FB50AB1003F6D09 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +325,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58FCB1261FB3A42B006D923B /* GameDomainModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58FCB1271FB3A42B006D923B /* GameDomainModel.xcdatamodel */,
+			);
+			currentVersion = 58FCB1271FB3A42B006D923B /* GameDomainModel.xcdatamodel */;
+			path = GameDomainModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 586ECD621FB116DC00BBFE89 /* Project object */;
 }

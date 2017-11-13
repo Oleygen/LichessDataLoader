@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GameEntity" representedClassName=".GameModel" syncable="YES" codeGenerationType="category">
+        <attribute name="createAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="moves" attributeType="String" syncable="YES"/>
+        <attribute name="rated" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="speed" attributeType="String" syncable="YES"/>
+        <attribute name="turnsCount" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="variant" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="winner" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="blackPlayer" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="gamesWhereBlack" inverseEntity="UserEntity" syncable="YES"/>
+        <relationship name="opening" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="OpeningEntity" syncable="YES"/>
+        <relationship name="whitePlayer" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="gamesWhereWhite" inverseEntity="UserEntity" syncable="YES"/>
+    </entity>
+    <entity name="OpeningEntity" representedClassName=".OpeningModel" syncable="YES" codeGenerationType="category">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <fetchedProperty name="games" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="OpeningEntity"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="UserEntity" representedClassName=".UserModel" syncable="YES" codeGenerationType="category">
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="gamesWhereBlack" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GameEntity" inverseName="blackPlayer" inverseEntity="GameEntity" syncable="YES"/>
+        <relationship name="gamesWhereWhite" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GameEntity" inverseName="whitePlayer" inverseEntity="GameEntity" syncable="YES"/>
+        <fetchedProperty name="allGamesFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity" predicateString="id ==  $FETCH_SOURCE.id"/>
+        </fetchedProperty>
+        <fetchedProperty name="allUserOpeningsFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="OpeningEntity"/>
+        </fetchedProperty>
+        <fetchedProperty name="blackGamesFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
+        </fetchedProperty>
+        <fetchedProperty name="lostGamesFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
+        </fetchedProperty>
+        <fetchedProperty name="tieGamesFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
+        </fetchedProperty>
+        <fetchedProperty name="totalTimeFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
+        </fetchedProperty>
+        <fetchedProperty name="whiteGamesFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
+        </fetchedProperty>
+        <fetchedProperty name="winrateFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
+        </fetchedProperty>
+        <fetchedProperty name="wonGamesFetch" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
+        </fetchedProperty>
+    </entity>
+    <elements>
+        <element name="GameEntity" positionX="97" positionY="207" width="128" height="225"/>
+        <element name="OpeningEntity" positionX="-243" positionY="331" width="128" height="104"/>
+        <element name="UserEntity" positionX="466" positionY="315" width="128" height="269"/>
+    </elements>
+</model>

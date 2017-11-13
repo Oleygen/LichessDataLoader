@@ -10,3 +10,6 @@ import Foundation
 
 print("Hello, World!")
 
+
+ThisApplication.start()
+
