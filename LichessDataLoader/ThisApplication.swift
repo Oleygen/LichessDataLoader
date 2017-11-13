@@ -43,11 +43,12 @@ class ThisApplication {
     }
     
     static func getUrl(withPage:Int) -> URL {
-        return URL(string: ThisApplication.url + "?nb=10&page=\(withPage)")!
+        print(ThisApplication.url + "?nb=10&with_moves=1&with_opening=1&page=\(withPage)")
+        return URL(string: ThisApplication.url + "?nb=10&with_moves=1&with_opening=1&page=\(withPage)")!
         
     }
     
-    static func fetchGames(fromUrl:URL) -> [GameModel] {
+    static func fetchGames(fromUrl:URL) -> [GameModelCodable] {
         var game = NSMutableOrderedSet(array: [])
         var gamesBatch = NSMutableOrderedSet(array: [])
         
@@ -63,6 +64,7 @@ class ThisApplication {
                 } else {
                     if let _response = response as? HTTPURLResponse {
                         if _response.statusCode  == 429 {
+                            cycleFlag = false
                             print("before sleep")
                             sleep(120)
                            
@@ -85,6 +87,7 @@ class ThisApplication {
                                     gamesBatch = NSMutableOrderedSet(array: decoded.currentPageResults)
                                     game.union(gamesBatch)
                                     gamesBatch = []
+                                    
                                     // lenivo zhdat
                                     
                                     if decoded.currentPage >= 2 {
@@ -121,7 +124,8 @@ class ThisApplication {
             ThisApplication.page = ThisApplication.page + 1
             print("End Of Iteration")
         }
-        return game.array as! [GameModel]
+        
+        return game.array as! [GameModelCodable]
     }
     
     

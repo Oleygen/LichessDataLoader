@@ -16,7 +16,7 @@ import CoreData
  */
 
 class OpeningModelCodable : Codable {
-    var code : String
+    var eco : String
     var name : String
 }
 

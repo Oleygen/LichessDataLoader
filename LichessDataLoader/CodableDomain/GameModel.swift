@@ -28,12 +28,30 @@ class GameModelCodable : Codable {
     var moves : String
     var rated : Bool
     var speed : String
-    var turnsCount : Int
     var url : String
     var variant: GameVariant
-    var winner : GameWinner
+    var winner : GameWinner?
     var opening : OpeningModelCodable
     
+}
+
+extension GameModelCodable : CustomStringConvertible {
+    var description: String {
+        get {
+            let string = """
+            createdAt : \(createdAt)
+            id : \(id)
+            moves : \(moves)
+            rated : \(rated)
+            speed : \(speed)
+            url : \(url)
+            variant : \(variant)
+            winner : \(String(describing: winner))
+            opening : \(opening)
+            """
+            return string
+        }
+    }
 }
 
 class GameModel : NSManagedObject {

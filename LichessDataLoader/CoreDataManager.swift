@@ -10,19 +10,25 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-    func loadData(_ array:[GameModel]) {
+    func loadData(_ array:[GameModelCodable]) {
         
-        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        context.perform {
-            array.forEach({ gameModel in
-                let newModel = NSEntityDescription.insertNewObject(forEntityName: "GameModel", into: context) as! GameModel
-            })
+        
+        array.forEach { gmc in
+            print(gmc.description)
         }
         
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModel")
-        
-        print(try? context.fetch(request))
+//        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+//        context.perform {
+//            array.forEach({ gameModel in
+//                let newModel = NSEntityDescription.insertNewObject(forEntityName: "GameModel", into: context) as! GameModel
+//            })
+//        }
+//
+//
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModel")
+//
+//        print(try? context.fetch(request))
         
     }
 }
