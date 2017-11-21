@@ -9,11 +9,7 @@
 import Foundation
 import CoreData
 
-/*
- 
- RAZBIVAEM NA DVE MODELI, ODNA - dlya core data, drugaya dlya codable
- 
- */
+
 
 class OpeningModelCodable : Codable {
     var eco : String

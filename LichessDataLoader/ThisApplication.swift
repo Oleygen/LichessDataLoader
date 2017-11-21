@@ -24,21 +24,21 @@ class ThisApplication {
     static let secondPartOfString = "/api/user/\(username)/games"
     static let url = firstPartOfString + secondPartOfString
     static var page = 0
+    
+    
+    
+    
     static func start() {
         // entry point
         
         let array = ThisApplication.fetchGames(fromUrl: getUrl(withPage: ThisApplication.page))
         let coreDataManager = CoreDataManager()
         coreDataManager.loadData(array)
-        print("YEBAT'!!!!")
         
-        print(array)
-    
-        print("group enter")
+        
+        print("wtf")
         group.enter()
-        print("group wait")
         group.wait()
-        print("All stuff done")
         
     }
     
@@ -49,7 +49,7 @@ class ThisApplication {
     }
     
     static func fetchGames(fromUrl:URL) -> [GameModelCodable] {
-        var game = NSMutableOrderedSet(array: [])
+        let game = NSMutableOrderedSet(array: [])
         var gamesBatch = NSMutableOrderedSet(array: [])
         
         var cycleFlag = true

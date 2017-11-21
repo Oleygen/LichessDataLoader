@@ -17,8 +17,18 @@ enum GameSpeed : String, Codable {
     case blitz, bullet, classical, unlimited, ultraBullet
 }
 
-enum GameWinner : String, Codable {
+enum GameWinner : String, Codable, CustomStringConvertible {
     case white, black
+    
+     var description: String {
+        if self == .white {
+            return "white"
+        } else if self == .black {
+            return "black"
+        } else {
+            return "no_winner"
+        }
+    }
 
 }
 
@@ -45,7 +55,7 @@ extension GameModelCodable : CustomStringConvertible {
             rated : \(rated)
             speed : \(speed)
             url : \(url)
-            variant : \(variant)
+            variant : \(variant.rawValue)
             winner : \(String(describing: winner))
             opening : \(opening)
             """

@@ -10,12 +10,31 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
+    
+    static var persistanceContainer = NSPersistentContainer(name: "GameDomainModel")
+    static var context : NSManagedObjectContext {
+        return persistanceContainer.viewContext
+    }
+    
+    
     func loadData(_ array:[GameModelCodable]) {
-        
-        
+        print("load data")
+    
         array.forEach { gmc in
-            print(gmc.description)
+            print("forEach")
+             CoreDataManager.context.insert(gmc.cd)
         }
+        print("after array")
+        
+        do{
+            
+            try CoreDataManager.context.save()
+            print("saved")
+        } catch {
+            
+            print("error \(error)")
+        }
+        
         
         
 //        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
