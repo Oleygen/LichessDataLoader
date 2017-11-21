@@ -11,8 +11,14 @@ import CoreData
 
 class UserModelCodable : Codable {
     var id : String
-    var name : String
+    var name : String?
     var rating : Int
+    
+    enum CodingKeys : String, CodingKey {
+        case id = "userId"
+        case name = "name"
+        case rating = "rating"
+    }
 }
 
 class UserModel : NSManagedObject {

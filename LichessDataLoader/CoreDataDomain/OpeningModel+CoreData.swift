@@ -12,7 +12,7 @@ import CoreData
 extension OpeningModelCodable {
     var cd : NSManagedObject {
         let managedObject = NSEntityDescription.insertNewObject(forEntityName: "OpeningEntity", into: CoreDataManager.context)
-        managedObject.setValue(self.eco, forKey: "eco")
+        managedObject.setValue(self.eco, forKey: "code")
         managedObject.setValue(self.name, forKey: "name")
         return managedObject
     }

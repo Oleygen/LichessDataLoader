@@ -18,11 +18,24 @@ class CoreDataManager {
     
     
     func loadData(_ array:[GameModelCodable]) {
+        
         print("load data")
-    
-        array.forEach { gmc in
+        
+        array.forEach { (gmc:GameModelCodable) in
             print("forEach")
-             CoreDataManager.context.insert(gmc.cd)
+            
+            let white = gmc.white.cd
+            let black = gmc.black.cd
+            let opening = gmc.opening.cd
+            let game = gmc.cd
+            
+            game.setValue(white, forKey: "whitePlayer")
+            game.setValue(black, forKey: "blackPlayer")
+            game.setValue(opening, forKey: "opening")
+            
+            
+            CoreDataManager.context.insert(game)
+            
         }
         print("after array")
         

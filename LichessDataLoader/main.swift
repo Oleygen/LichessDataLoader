@@ -8,7 +8,6 @@
 
 import Foundation
 
-print("Hello, World!")
-
+print("Program will be started")
 ThisApplication.start()
 

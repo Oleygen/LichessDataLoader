@@ -31,6 +31,22 @@ class ThisApplication {
     static func start() {
         // entry point
         
+        print("Start loading persistent store")
+        group.enter()
+        
+        CoreDataManager.persistanceContainer.loadPersistentStores { (storeDescription, error) in
+            if error != nil {
+                print("ERROR WHEN LOAD PERSISTENT STORE: \(error!.localizedDescription)")
+                abort()
+            } else {
+                print("we good")
+            }
+            print("Finish loading persistent store")
+            group.leave()
+        }
+        group.wait()
+        
+        print("Start fetching games")
         let array = ThisApplication.fetchGames(fromUrl: getUrl(withPage: ThisApplication.page))
         let coreDataManager = CoreDataManager()
         coreDataManager.loadData(array)

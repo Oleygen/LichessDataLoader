@@ -6,7 +6,7 @@
         <attribute name="moves" attributeType="String" syncable="YES"/>
         <attribute name="rated" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
-        <attribute name="turnsCount" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="turnsCount" transient="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="variant" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="winner" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,10 +23,10 @@
     </entity>
     <entity name="UserEntity" representedClassName=".UserModel" syncable="YES" codeGenerationType="category">
         <attribute name="id" attributeType="String" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="gamesWhereBlack" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GameEntity" inverseName="blackPlayer" inverseEntity="GameEntity" syncable="YES"/>
-        <relationship name="gamesWhereWhite" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GameEntity" inverseName="whitePlayer" inverseEntity="GameEntity" syncable="YES"/>
+        <relationship name="gamesWhereBlack" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="blackPlayer" inverseEntity="GameEntity" syncable="YES"/>
+        <relationship name="gamesWhereWhite" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="whitePlayer" inverseEntity="GameEntity" syncable="YES"/>
         <fetchedProperty name="allGamesFetch" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity" predicateString="id ==  $FETCH_SOURCE.id"/>
         </fetchedProperty>
@@ -54,6 +54,11 @@
         <fetchedProperty name="wonGamesFetch" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="GameEntity"/>
         </fetchedProperty>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="GameEntity" positionX="97" positionY="207" width="128" height="225"/>

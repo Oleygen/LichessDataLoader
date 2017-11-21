@@ -37,12 +37,52 @@ class GameModelCodable : Codable {
     var id : String
     var moves : String
     var rated : Bool
-    var speed : String
+    var speed : GameSpeed
     var url : String
     var variant: GameVariant
     var winner : GameWinner?
     var opening : OpeningModelCodable
+    var black : UserModelCodable
+    var white : UserModelCodable
     
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: RootKeys.self)
+        
+        white = try container.nestedContainer(keyedBy: PlayerKeys.self, forKey: .players).decode(UserModelCodable.self, forKey: .white)
+        black = try container.nestedContainer(keyedBy: PlayerKeys.self, forKey: .players).decode(UserModelCodable.self, forKey: .black)
+        
+        
+        createdAt = try container.decode(Date.self, forKey: .createdAt)
+        id = try container.decode(String.self, forKey: .id)
+        moves = try container.decode(String.self, forKey:.moves)
+        rated = try container.decode(Bool.self, forKey: .rated)
+        speed = try container.decode(GameSpeed.self, forKey: .speed)
+        url = try container.decode(String.self, forKey: .url)
+        variant = try container.decode(GameVariant.self, forKey: .variant)
+        winner = try container.decode(GameWinner.self, forKey: .winner)
+        opening = try container.decode(OpeningModelCodable.self, forKey: .opening)
+        
+    }
+    
+    enum RootKeys : CodingKey {
+        case players
+
+        
+        case createdAt
+        case id
+        case moves
+        case rated
+        case speed
+        case url
+        case variant
+        case winner
+        case opening
+    }
+    
+    enum PlayerKeys : CodingKey {
+        case white
+        case black
+    }
 }
 
 extension GameModelCodable : CustomStringConvertible {
