@@ -58,13 +58,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5831637C1FC405E100E2923A /* Transformer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Transformer;
-			sourceTree = "<group>";
-		};
 		585F03881FB50A9E003F6D09 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,7 +85,6 @@
 		586ECD6C1FB116DC00BBFE89 /* LichessDataLoader */ = {
 			isa = PBXGroup;
 			children = (
-				5831637C1FC405E100E2923A /* Transformer */,
 				585F03881FB50A9E003F6D09 /* Extension */,
 				586ECD761FB119D000BBFE89 /* CodableDomain */,
 				58F213F51FB2440A0087682A /* CoreDataDomain */,
