@@ -18,25 +18,20 @@ class OpeningModelCodable : Codable {
 
 
 class OpeningModel : NSManagedObject {
-//
-//    enum CodingKeys : String, CodingKey {
-//        case code
-//        case name
-//    }
-//
-//
-//    required init(from decoder: Decoder) throws {
-//        guard let context = decoder.userInfo[.context!] as? NSManagedObjectContext else {
-//            fatalError()
-//        }
-//
-//        guard let entity = NSEntityDescription.entity(forEntityName: "OpeningEntity", in: context) else {
-//            fatalError()
-//        }
-//
-//        let container = decoder.container(keyedBy: CodingKeys.self)
-//        code = try container.decode(String?.self, forKey: .code)
-//        name = try container.decode(String?.self, forKey: .name)
-//    }
+    
+    var openedGames : Array<GameModel> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameEntity")
+        let predicate = NSPredicate(format: "opening == %@", self)
+        request.predicate = predicate
+        let result = try! CoreDataManager.context.fetch(request)
+        return result as! Array<GameModel>
+    }
 
+    var countInGames : Int {
+        let request : NSFetchRequest<GameModel> = GameModel.fetchRequest()
+        let predicate = NSPredicate(format: "opening == %@", self)
+        request.predicate = predicate
+        let count = try! CoreDataManager.context.count(for: request)
+        return count
+    }
 }

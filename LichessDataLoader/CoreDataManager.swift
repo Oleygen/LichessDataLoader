@@ -6,23 +6,31 @@
 //  Copyright © 2017 Gennady Oleynik. All rights reserved.
 //
 
+//-com.apple.CoreData.SQLDebug 1
+
 import Foundation
 import CoreData
 
 class CoreDataManager {
     
-    static var persistanceContainer = NSPersistentContainer(name: "GameDomainModel")
+    static var persistanceContainer : NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "GameDomainModel")
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return container
+    }()
+    
+    
     static var context : NSManagedObjectContext {
+        
         return persistanceContainer.viewContext
     }
     
     
     func loadData(_ array:[GameModelCodable]) {
         
-        print("load data")
+        print("start load data")
         
         array.forEach { (gmc:GameModelCodable) in
-            print("forEach")
             
             let white = gmc.white.cd
             let black = gmc.black.cd
@@ -37,14 +45,13 @@ class CoreDataManager {
             CoreDataManager.context.insert(game)
             
         }
-        print("after array")
         
         do{
             
             try CoreDataManager.context.save()
             print("saved")
-        } catch {
             
+        } catch {
             print("error \(error)")
         }
         

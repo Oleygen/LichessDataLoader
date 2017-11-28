@@ -105,5 +105,10 @@ extension GameModelCodable : CustomStringConvertible {
 }
 
 class GameModel : NSManagedObject {
-
+    static var anyGame : GameModel {
+        let request : NSFetchRequest<GameModel> = GameModel.fetchRequest()
+        let anyGame = try! CoreDataManager.context.fetch(request).first!
+        return anyGame
+        
+    }
 }
